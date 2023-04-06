@@ -54,11 +54,15 @@ public class PlayerMovement : MonoBehaviour
         if(dirX > 0f) 
         {
             spriteRenderer.flipX = false;
+            boxCollider2D.offset = new Vector2(-0.5166473f, 0f);
+            
             movementState = MovementState.Running;
         }
         else if (dirX < 0f) 
         {
             spriteRenderer.flipX = true;
+            boxCollider2D.offset = new Vector2(0.5166473f, 0f);
+           
             movementState = MovementState.Running;
         }
         else 
