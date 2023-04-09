@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 7
   m_Sprite: {fileID: -3318188226485093758, guid: ae72133dacba6ec4eb33ecde48f50e56, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -101,12 +101,12 @@ MonoBehaviour:
   riGidBody: {fileID: 1910094065472923604}
   boxCollider2D: {fileID: 1910094065472923607}
   animator: {fileID: 1910094065472923625}
-  jumpHeight: 3
-  playerSpeed: 5
+  jumpHeight: 8
+  playerSpeed: 7
   spriteRenderer: {fileID: 1910094065472923627}
   jumpableGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
 --- !u!95 &1910094065472923625
 Animator:
   serializedVersion: 3
@@ -146,7 +146,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1910094065472923607
 BoxCollider2D:
   m_ObjectHideFlags: 0
