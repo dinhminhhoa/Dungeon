@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
     public Animator animator;
-    public float attackRange = 0.3f;
+    public float attackRange = 1f;
     public LayerMask enemyLayers;
     public Transform attackPoint;
     public int attackDamage = 30;
