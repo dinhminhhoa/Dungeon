@@ -23,7 +23,6 @@ public class KingMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-
     private void Update()
     {
         dirX = Input.GetAxisRaw("Horizontal");
@@ -38,7 +37,6 @@ public class KingMovement : MonoBehaviour
             riGidBody.velocity = new Vector2(dirX * playerSpeed, riGidBody.velocity.y);
         }
     }
-
     private void Jumping()
     {
         if (Input.GetButtonDown("Jump") && IsGround())
@@ -47,19 +45,21 @@ public class KingMovement : MonoBehaviour
         }
     }
 
-
-
+    
     private void UpdateAnimation()
     {
         if (dirX > 0f)
         {
-            spriteRenderer.flipX = false;
+            //spriteRenderer.flipX = false;
+            transform.localScale = new Vector2(1, 1);
             movementState = MovementState.Running;
+            
         }
         else if (dirX < 0f)
         {
-            spriteRenderer.flipX = true;         
-            movementState = MovementState.Running;
+            //spriteRenderer.flipX = true;
+            transform.localScale = new Vector2(-1, 1);
+            movementState = MovementState.Running;          
         }
         else
         {
