@@ -4,33 +4,66 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public Animator animator;
-    public int maxHealth = 200;
-    int currentHealth;
+    [SerializeField] private float startingHealth;
+    public float currentHealth {get; private set;}
+    private Animator animator;
+    private bool dead;
 
-    public void Start()
+    [Header("Components")]
+    private Behaviour[] components;
+    
+   
+    private void Awake()
     {
-        maxHealth = currentHealth;
+        currentHealth = startingHealth;
+        animator = GetComponent<Animator>();
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
-        currentHealth -= damage;
+        currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
 
-        // PLay hurt animation 
-        animator.SetTrigger("Hurt");
-
-        if (currentHealth <= 0)
+        if(currentHealth  > 0) 
         {
-            Die();
+            // player hurt
+            animator.SetTrigger("Hurt");
+
+
+        }
+        else 
+        {
+            if(!dead)
+            {
+                
+                animator.SetTrigger("Death");
+
+                ////Player
+                //if(GetComponent<KingMovement>() != null)
+                //GetComponent<KingMovement>().enabled = false;
+
+                ////Enemy
+                //if(GetComponent<EnemyPatrol>() != null) 
+                //GetComponent<EnemyPatrol>().enabled = false;
+
+                //if(GetComponent<MeleeEnemy>()!= null)
+                //GetComponent<MeleeEnemy>().enabled = false;
+                
+                foreach ( Behaviour component in components ) 
+                {
+                    component.enabled = false;
+                }
+
+
+                dead = true;
+            }
+            
         }
     }
-    private void Die()
-    {
-        Debug.Log("Player died");
 
-        animator.SetBool("Death", true);
-        GetComponent<Collider2D>().enabled = false;
-        this.enabled = false;
+    public void AddHealth(float value)
+    {
+        currentHealth = Mathf.Clamp(currentHealth + value, 0, startingHealth);
     }
+    
+    
 }
