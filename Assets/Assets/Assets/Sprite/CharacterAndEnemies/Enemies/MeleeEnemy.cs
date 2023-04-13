@@ -20,7 +20,6 @@ public class MeleeEnemy : MonoBehaviour
     // References
     private Animator animator;
     private PlayerHealth playerHealth;
-
     private EnemyPatrol enemyPatrol;
 
     private void Awake()
@@ -64,17 +63,18 @@ public class MeleeEnemy : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance ,
             new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
     }
 
-    private void DamagePlayer()
+    public void DamagePlayer()
     {
         if(PlayerInSight()) 
         {
             // Damage player health, if player range still damage him
             playerHealth.TakeDamage(damage);
         }
+
     }
 }

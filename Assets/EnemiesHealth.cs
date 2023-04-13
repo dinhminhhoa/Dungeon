@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemiesHealth : MonoBehaviour
 {
     public Animator animator;
-    public int maxHealth = 100;
-    int currentHealth;
+    [SerializeField] public int maxHealth = 100;
+    private int currentHealth;
    private void Start()
     {
         currentHealth = maxHealth;
@@ -15,7 +15,7 @@ public class EnemiesHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-
+       
         // PLay hurt animation 
         animator.SetTrigger("Hurt");
 

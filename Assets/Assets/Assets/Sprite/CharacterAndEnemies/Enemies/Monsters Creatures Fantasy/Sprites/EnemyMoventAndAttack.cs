@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class EnemyMoventAndAttack : MonoBehaviour
 {
@@ -27,12 +30,28 @@ public class EnemyMoventAndAttack : MonoBehaviour
     private float intTimer;
     #endregion
 
-    //public int attackDamage = 10;
+
+    public float attackRange = 1f;
+    public LayerMask enemyLayers;
+    public Transform attackPoint;
+    public int attackDamage = 30;
+
+    //[Header("Attack Parameters")]
+    //[SerializeField] private float attackCooldown;
+    //[SerializeField] private float range;
+    //[SerializeField] private int damage;
+
+    //[Header("Collider Parameters")]
+    //[SerializeField] private float colliderDistance;
+    //[SerializeField] private BoxCollider2D boxCollider;
+
+    //[Header("Player Parameters")]
+    //[SerializeField] private float cooldownTimer = Mathf.Infinity;
+    //[SerializeField] private LayerMask playerLayer;
     //public Transform attackPoint;
-    //public LayerMask playerLayers;
     //public float attackRange = 1f;
 
-
+    //private MeleeEnemy takedamage;
 
     private void Awake()
     {
@@ -43,12 +62,12 @@ public class EnemyMoventAndAttack : MonoBehaviour
     }
     private void Update()
     {
-        if(!attackMode)
+        if (!attackMode)
         {
             Move();
         }
 
-        if(!InsiseofLimits() && !inRange && !animator.GetCurrentAnimatorStateInfo(0).IsName("Goblin_Attack"))
+        if (!InsiseofLimits() && !inRange && !animator.GetCurrentAnimatorStateInfo(0).IsName("Goblin_Attack"))
         {
             SelectTarget();
         }
@@ -70,7 +89,6 @@ public class EnemyMoventAndAttack : MonoBehaviour
 
         if (inRange == false)
         {
-            
             StopAttack();
             Flip();
         }
@@ -91,7 +109,6 @@ public class EnemyMoventAndAttack : MonoBehaviour
 
         if (distance > attackDistance)
         {
-           
             StopAttack();
         }
         else if (attackDistance >= distance && cooling == false)
@@ -123,32 +140,15 @@ public class EnemyMoventAndAttack : MonoBehaviour
 
         animator.SetBool("canRun", false);
         animator.SetBool("Attack", true);
-        Flip();
-        //animator.SetTrigger("Attack");
-
-        //Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayers);
-
-        //foreach (Collider2D enemy in hitEnemies)
-        //{
-        //    Debug.Log(" We hit " + enemy.name);
-
-        //    enemy.GetComponent<EnemiesHealth>().TakeDamage(attackDamage);
-        //}
     }
-    //private void OnDrawGizmosSelected()
-    //{
-    //    if (attackPoint == null)
-    //    {
-    //        return;
-    //    }
-    //    Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-    //}
+
+
     private void Cooldown()
     {
         timer -= Time.deltaTime;
-        if( timer <= 0 && cooling && attackMode)
+        if (timer <= 0 && cooling && attackMode)
         {
-            cooling= false;
+            cooling = false;
             timer = intTimer;
         }
     }
@@ -171,8 +171,6 @@ public class EnemyMoventAndAttack : MonoBehaviour
         }
     }
 
-   
-
     public void TriggerCooling()
     {
         cooling = true;
@@ -192,17 +190,17 @@ public class EnemyMoventAndAttack : MonoBehaviour
         {
             target = leftLimit;
         }
-        else 
+        else
         {
             target = rightLimit;
         }
-        Flip();
+      ;
     }
 
     private void Flip()
     {
         Vector3 rotation = transform.eulerAngles;
-        if(transform.position.x > target.position.x)
+        if (transform.position.x > target.position.x)
         {
             rotation.y = 0f;
         }
@@ -211,6 +209,32 @@ public class EnemyMoventAndAttack : MonoBehaviour
             rotation.y = 180f;
         }
 
-        transform.eulerAngles= rotation;
+        transform.eulerAngles = rotation;
+    }
+
+    private void AttackPlayer()
+    {
+
+        animator.GetBool("Attack");
+
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+
+        foreach (Collider2D player in hitEnemies)
+        {
+            Debug.Log(" We hit " + player);
+
+            player.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
+        }
+    }
+
+
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+        {
+            return;
+        }
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+
     }
 }
