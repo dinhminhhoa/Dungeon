@@ -34,25 +34,9 @@ public class EnemyMoventAndAttack : MonoBehaviour
     public float attackRange = 1f;
     public LayerMask enemyLayers;
     public Transform attackPoint;
-    public int attackDamage = 30;
+    [SerializeField] public int attackDamage;
 
-    //[Header("Attack Parameters")]
-    //[SerializeField] private float attackCooldown;
-    //[SerializeField] private float range;
-    //[SerializeField] private int damage;
-
-    //[Header("Collider Parameters")]
-    //[SerializeField] private float colliderDistance;
-    //[SerializeField] private BoxCollider2D boxCollider;
-
-    //[Header("Player Parameters")]
-    //[SerializeField] private float cooldownTimer = Mathf.Infinity;
-    //[SerializeField] private LayerMask playerLayer;
-    //public Transform attackPoint;
-    //public float attackRange = 1f;
-
-    //private MeleeEnemy takedamage;
-
+   
     private void Awake()
     {
         SelectTarget();
@@ -102,7 +86,12 @@ public class EnemyMoventAndAttack : MonoBehaviour
             inRange = true;
             Flip();
         }
+        //if (trigger.tag == "Player")
+        //{
+        //    trigger.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
+        //}
     }
+    
     private void EnemyLogic()
     {
         distance = Vector2.Distance(transform.position, target.position);

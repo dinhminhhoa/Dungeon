@@ -1,17 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class HealthCollectible : MonoBehaviour
 {
-    [SerializeField] private float healthValue;
+    PlayerHealth playerHealth;
 
+    public float healthBonus = 15f;
+
+    private void Awake()
+    {
+        playerHealth = FindObjectOfType<PlayerHealth>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if(playerHealth.currentHealth < playerHealth.maxHealth) 
         {
-            collision.GetComponent<PlayerHealth>().AddHealth(healthValue);
-            gameObject.SetActive(false);
+            Destroy(gameObject);
+            playerHealth.currentHealth = playerHealth.currentHealth + healthBonus;
         }
     }
 }

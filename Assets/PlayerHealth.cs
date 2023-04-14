@@ -2,40 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerHealth : MonoBehaviour
 {
     public Animator animator;
     public float maxHealth = 100;
     public float currentHealth;
-    //public Rigidbody2D rigidbody;
+
+    public HealthBar healthBar;
+
+    
     private void Start()
     {
         currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
         //rigidbody= GetComponent<Rigidbody2D>();
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
         // PLay hurt animation 
         animator.SetTrigger("Hurt");
         if (currentHealth <= 0)
         {
             Die();
         }
+        
     }
     private void Die()
     {
         Debug.Log("Player died");
-        
+
         animator.SetBool("Death", true);
-      
+
         //GetComponent<Collider2D>().enabled = false;
         //this.enabled = false;
     }
 
-   
-   
     private bool dead;
 
     [Header("Components")]
@@ -75,12 +80,12 @@ public class PlayerHealth : MonoBehaviour
                 if (GetComponent<MeleeEnemy>() != null)
                     GetComponent<MeleeEnemy>().enabled = false;
 
-                //foreach ( Behaviour component in components ) 
+                //foreach (Behaviour component in components)
                 //{
                 //    component.enabled = false;
                 //}
 
-                dead = true;
+                //dead = true;
             }
 
         }
