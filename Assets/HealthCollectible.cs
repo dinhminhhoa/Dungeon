@@ -1,4 +1,4 @@
-
+﻿
 using UnityEngine;
 
 public class HealthCollectible : MonoBehaviour
@@ -11,12 +11,20 @@ public class HealthCollectible : MonoBehaviour
     {
         playerHealth = FindObjectOfType<PlayerHealth>();
     }
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(playerHealth.currentHealth < playerHealth.maxHealth) 
         {
             Destroy(gameObject);
-            playerHealth.currentHealth = playerHealth.currentHealth + healthBonus;
+            float maxHeal = Mathf.Max(playerHealth.maxHealth - playerHealth.currentHealth, 0); // lựa chọn giữa 2 biến và chọn biến lớn nhất
+            float restoreHeal = Mathf.Min(maxHeal, healthBonus); // lựa chọn biến nhỏ nhất giữa 2 biến
+        
+            playerHealth.currentHealth = playerHealth.currentHealth + restoreHeal;
+            
         }
+        
     }
+    
+
 }

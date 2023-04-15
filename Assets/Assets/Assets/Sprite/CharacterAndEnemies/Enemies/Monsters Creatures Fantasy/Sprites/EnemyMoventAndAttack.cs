@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class EnemyMoventAndAttack : MonoBehaviour
 {

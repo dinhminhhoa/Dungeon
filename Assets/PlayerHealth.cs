@@ -18,6 +18,7 @@ public class PlayerHealth : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
         //rigidbody= GetComponent<Rigidbody2D>();
     }
+    
 
     public void TakeDamage(int damage)
     {
@@ -52,6 +53,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
     }
+
 
     public void TakeDamage(float damage)
     {
