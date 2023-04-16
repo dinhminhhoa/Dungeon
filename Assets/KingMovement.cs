@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KingMovement : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D riGidBody;
+    [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private BoxCollider2D boxCollider2D;
     [SerializeField] private Animator animator;
     [SerializeField] private float jumpHeight;
@@ -12,36 +12,66 @@ public class KingMovement : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private LayerMask jumpableGround;
 
+    [SerializeField] private TrailRenderer trailRenderer;
+    private bool canDash = true;
+    private bool isDashing;
+    private float dashingPower = 24f;
+    private float dashingTime = 0.2f;
+    private float dashingCooldown = 1f;
+
     private float dirX;
     private enum MovementState { Idle, Running, Jumping, Falling }
     private MovementState movementState;
 
     private void Awake()
     {
-        riGidBody = GetComponent<Rigidbody2D>();
+        rigidBody = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        trailRenderer = GetComponent<TrailRenderer>();
+    }
+    private void Start()
+    {
+        trailRenderer.emitting = false;
     }
     private void Update()
     {
+        if(isDashing)
+        {
+            return;
+        }
         dirX = Input.GetAxisRaw("Horizontal");
         Moving();
         Jumping();
         UpdateAnimation();
+
+        if(Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        {
+            StartCoroutine(Dash());
+        }
+    }
+    private void FixedUpdate()
+    {
+        if(isDashing)
+        {
+            return;
+        }
+
+        Moving();
     }
     private void Moving()
     {
-        if (riGidBody.bodyType != RigidbodyType2D.Static)
+        if (rigidBody.bodyType != RigidbodyType2D.Static)
         {
-            riGidBody.velocity = new Vector2(dirX * playerSpeed, riGidBody.velocity.y);
+            rigidBody.velocity = new Vector2(dirX * playerSpeed, rigidBody.velocity.y);
         }
     }
     private void Jumping()
     {
         if (Input.GetButtonDown("Jump") && IsGround())
         {
-            riGidBody.velocity = new Vector2(0, jumpHeight);
+            rigidBody.velocity = new Vector2(0, jumpHeight);
         }
     }
 
@@ -66,11 +96,11 @@ public class KingMovement : MonoBehaviour
             movementState = MovementState.Idle;
         }
 
-        if (riGidBody.velocity.y > 0.1f)
+        if (rigidBody.velocity.y > 0.1f)
         {
             movementState = MovementState.Jumping;
         }
-        else if (riGidBody.velocity.y < -0.1f)
+        else if (rigidBody.velocity.y < -0.1f)
         {
             movementState = MovementState.Falling;
         }
@@ -80,5 +110,20 @@ public class KingMovement : MonoBehaviour
     {
         return Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0f, Vector2.down, 0.1f, jumpableGround);
 
+    }
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        float originalGravity = rigidBody.gravityScale;
+        rigidBody.gravityScale = 0f;
+        rigidBody.velocity = new Vector2(dirX * dashingPower, 0f);
+        trailRenderer.emitting = true;
+        yield return new WaitForSeconds(dashingTime);
+        trailRenderer.emitting = false;
+        rigidBody.gravityScale = originalGravity;
+        isDashing = false;
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
     }
 }

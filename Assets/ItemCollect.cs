@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ItemCollect : MonoBehaviour
 {
-    public delegate void CollectCherry(int Gold); // dinh nghia ham Delegate
-    public static CollectCherry collectGoldDelegate; // khai bao ham Delegate
+    public delegate void CollectGold(int Gold); // dinh nghia ham Delegate
+    public static CollectGold collectGoldDelegate; // khai bao ham Delegate
     private int Gold = 0;
 
     private void Start()
