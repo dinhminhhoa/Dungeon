@@ -19,6 +19,7 @@ public class PausePanel : MonoBehaviour
         {
             UIManager.Instance.ActiveSettingPanel(true);
             UIManager.Instance.ActivePausePanel(false);
+            UIManager.Instance.ActiveGamePanel(false);
         }
     }
 

@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 
 public class GamePanel : MonoBehaviour
 {
@@ -15,9 +16,23 @@ public class GamePanel : MonoBehaviour
     private float timeRemaining;
     private bool timerIsRunning = false;
 
+    [SerializeField] private HealthBar healthBar;
+    private PlayerHealth playerHealth;
+    private float currentHealthh;
+    public Slider slider;
+    GameObject player;
+
+    
     private void Awake()
     {
         SetTimeRemain(120);
+        //player = GameObject.FindGameObjectWithTag("Player");
+        //playerHealth = player.GetComponent<PlayerHealth>();
+    }
+
+    private void Start()
+    {
+        currentHealthh = playerHealth.maxHealth;
     }
 
     private void OnEnable()
@@ -31,9 +46,12 @@ public class GamePanel : MonoBehaviour
     {
         ItemCollect.collectGoldDelegate -= OnPlayerCollect;
     }
+   
+
 
     private void Update()
     {
+        
         if (timerIsRunning)
         {
             if (timeRemaining > 0)
@@ -54,6 +72,9 @@ public class GamePanel : MonoBehaviour
                 //}
             }
         }
+        SetHealth(playerHealth.currentHealth);
+        
+
     }
 
     private void OnPlayerCollect(int value)
@@ -73,4 +94,14 @@ public class GamePanel : MonoBehaviour
     {
         timeRemaining = v;
     }
+    public void SetHealth(float health)
+    {
+        slider.value = health;
+    }
+    public void SetMaxHealth(float health)
+    {
+        slider.maxValue = health;
+        slider.value = health;
+    }
+
 }
