@@ -43,10 +43,11 @@ public class GameManager : BaseManager<GameManager>
 
         if (UIManager.HasInstance)
         {
-            UIManager.Instance.ActiveVictoryPanel(false);
-            UIManager.Instance.ActiveGamePanel(false);
-            UIManager.Instance.ActiveLosePanel(false);
             UIManager.Instance.ActiveMenuPanel(true);
+            UIManager.Instance.ActiveHealthBarPanel(false);
+            UIManager.Instance.ActiveGamePanel(false);                          
+            UIManager.Instance.ActiveVictoryPanel(false);
+            UIManager.Instance.ActiveLosePanel(false);
             UIManager.Instance.GamePanel.NumberOfCherries.SetText("0");
         }
     }

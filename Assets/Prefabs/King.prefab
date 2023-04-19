@@ -378,6 +378,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   trailRenderer: {fileID: 77984731}
+  noFriction: {fileID: 6200000, guid: 7671b3e7cdad47d4fbb7a394ed537be8, type: 2}
+  highFriction: {fileID: 6200000, guid: d756af4f5a335b44b9204fd7aba8bf51, type: 2}
 --- !u!60 &532518340
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -579,7 +581,7 @@ MonoBehaviour:
     m_Bits: 128
   attackPoint: {fileID: 560314418}
   attackDamage: 30
-  attackRate: 0.5
+  attackRate: 1
 --- !u!114 &532518338
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ public class EnemiesHealth : MonoBehaviour
             Die();
         }
     }
-    private void Die()
+    public void Die()
     {
         Debug.Log("Enemy died");
 

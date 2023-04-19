@@ -11,14 +11,16 @@ public class PlayerHealth : MonoBehaviour
 
     public HealthBar healthBar;
 
+    private  Rigidbody2D rig;
+
     
     private void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        //rigidbody= GetComponent<Rigidbody2D>();
+        rig = GetComponent<Rigidbody2D>();
     }
-    
+
 
     public void TakeDamage(int damage)
     {
@@ -97,6 +99,12 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = Mathf.Clamp(currentHealth + value, 0, maxHealth);
     }
-
+    private void OnDisable()
+    {
+        if(currentHealth <= 0)
+        {
+            rig.bodyType = RigidbodyType2D.Kinematic;
+        }
+    }
 
 }

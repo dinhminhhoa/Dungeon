@@ -16,11 +16,8 @@ public class GamePanel : MonoBehaviour
     private float timeRemaining;
     private bool timerIsRunning = false;
 
-    [SerializeField] private HealthBar healthBar;
-    private PlayerHealth playerHealth;
-    private float currentHealthh;
-    public Slider slider;
-    GameObject player;
+   
+    
 
     
     private void Awake()
@@ -30,24 +27,25 @@ public class GamePanel : MonoBehaviour
         //playerHealth = player.GetComponent<PlayerHealth>();
     }
 
-    private void Start()
-    {
-        currentHealthh = playerHealth.maxHealth;
-    }
+   
 
     private void OnEnable()
     {
         SetTimeRemain(120);
         timerIsRunning = true;
         ItemCollect.collectGoldDelegate += OnPlayerCollect;
+        
     }
 
     private void OnDisable()
     {
         ItemCollect.collectGoldDelegate -= OnPlayerCollect;
     }
-   
 
+    private void Start()
+    { 
+
+    }
 
     private void Update()
     {
@@ -66,13 +64,13 @@ public class GamePanel : MonoBehaviour
                 timerIsRunning = false;
                 //if (UIManager.HasInstance && GameManager.HasInstance && AudioManager.HasInstance)
                 //{
-                //    AudioManager.Instance.PlaySE(AUDIO.SE_LOSE);
-                //    GameManager.Instance.PauseGame();
-                //    UIManager.Instance.ActiveLosePanel(true);
+                //    AudioManager.Instance.PlaySE(AUDIO.SE_LOSE);                 
                 //}
+                GameManager.Instance.PauseGame();
+                UIManager.Instance.ActiveLosePanel(true);
             }
         }
-        SetHealth(playerHealth.currentHealth);
+        
         
 
     }
@@ -94,14 +92,6 @@ public class GamePanel : MonoBehaviour
     {
         timeRemaining = v;
     }
-    public void SetHealth(float health)
-    {
-        slider.value = health;
-    }
-    public void SetMaxHealth(float health)
-    {
-        slider.maxValue = health;
-        slider.value = health;
-    }
+   
 
 }

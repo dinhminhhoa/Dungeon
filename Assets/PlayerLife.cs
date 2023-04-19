@@ -34,7 +34,7 @@ public class PlayerLife : MonoBehaviour
 
     public void Restart()
     {
-        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         this.transform.position = playerSpawnPoint.position;
         rb.bodyType = RigidbodyType2D.Dynamic;
         animator.Rebind();
