@@ -47,6 +47,7 @@ public class SettingPanel : MonoBehaviour
 
     public void OnCancelButtonClick()
     {
+   
         if (UIManager.HasInstance)
         {
             UIManager.Instance.ActiveSettingPanel(false);
@@ -59,6 +60,7 @@ public class SettingPanel : MonoBehaviour
                 UIManager.Instance.ActivePausePanel(true);
             }
         }
+        
     }
 
     public void OnSubmitButtonClick()
