@@ -581,7 +581,7 @@ MonoBehaviour:
     m_Bits: 128
   attackPoint: {fileID: 560314418}
   attackDamage: 30
-  attackRate: 1
+  attackRate: 10
 --- !u!114 &532518338
 MonoBehaviour:
   m_ObjectHideFlags: 0

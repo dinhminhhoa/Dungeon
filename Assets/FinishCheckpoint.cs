@@ -21,7 +21,7 @@ public class FinishCheckpoint : MonoBehaviour
     }
     private void CompleteLevel()
     {
-        if (SceneManager.GetActiveScene().name.Equals("MainScenePixelAdvanture2"))
+        if (SceneManager.GetActiveScene().name.Equals("LevelBosss"))
         {
             if (UIManager.HasInstance)
             {

@@ -25,14 +25,13 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
         // PLay hurt animation 
         animator.SetTrigger("Hurt");
         if (currentHealth <= 0)
         {
             Die();
         }
-        
+        healthBar.SetHealth(currentHealth);    
     }
     private void Die()
     {
@@ -57,43 +56,43 @@ public class PlayerHealth : MonoBehaviour
     }
 
 
-    public void TakeDamage(float damage)
-    {
-        currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
+    //public void TakeDamage(float damage)
+    //{
+    //    currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
 
-        if (currentHealth > 0)
-        {
-            // player hurt
-            animator.SetTrigger("Hurt");
-        }
-        else
-        {
-            if (!dead)
-            {
+    //    if (currentHealth > 0)
+    //    {
+    //        // player hurt
+    //        animator.SetTrigger("Hurt");
+    //    }
+    //    else
+    //    {
+    //        if (!dead)
+    //        {
 
-                animator.SetTrigger("Death");
+    //            animator.SetTrigger("Death");
 
-                //Player
-                if (GetComponent<KingMovement>() != null)
-                    GetComponent<KingMovement>().enabled = false;
+    //            //Player
+    //            if (GetComponent<KingMovement>() != null)
+    //                GetComponent<KingMovement>().enabled = false;
 
-                //Enemy
-                if (GetComponent<EnemyPatrol>() != null)
-                    GetComponent<EnemyPatrol>().enabled = false;
+    //            //Enemy
+    //            if (GetComponent<EnemyPatrol>() != null)
+    //                GetComponent<EnemyPatrol>().enabled = false;
 
-                if (GetComponent<MeleeEnemy>() != null)
-                    GetComponent<MeleeEnemy>().enabled = false;
+    //            if (GetComponent<MeleeEnemy>() != null)
+    //                GetComponent<MeleeEnemy>().enabled = false;
 
-                //foreach (Behaviour component in components)
-                //{
-                //    component.enabled = false;
-                //}
+    //            //foreach (Behaviour component in components)
+    //            //{
+    //            //    component.enabled = false;
+    //            //}
 
-                //dead = true;
-            }
+    //            //dead = true;
+    //        }
 
-        }
-    }
+    //    }
+    //}
 
     public void AddHealth(float value)
     {

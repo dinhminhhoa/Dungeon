@@ -24,20 +24,26 @@ public class PlayerLife : MonoBehaviour
         //{
         //    AudioManager.Instance.PlaySE(AUDIO.SE_DEATH);
         //}
-        if(playerHealth.currentHealth <=0) 
-        {
-            rb.bodyType = RigidbodyType2D.Static;
-            animator.GetBool("Death");
-        }
+        //if(playerHealth.currentHealth <=0) 
+        //{
+        //    rb.bodyType = RigidbodyType2D.Static;
+        //    animator.GetBool("Death");
+        //}
        
     }
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        this.transform.position = playerSpawnPoint.position;
-        rb.bodyType = RigidbodyType2D.Dynamic;
-        animator.Rebind();
-        playerHealth.currentHealth = 100f;
+        if (playerHealth.currentHealth <= 0)
+        {
+            rb.bodyType = RigidbodyType2D.Static;
+            animator.GetBool("Death");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            this.transform.position = playerSpawnPoint.position;
+            //rb.bodyType = RigidbodyType2D.Dynamic;
+            animator.Rebind();
+            playerHealth.currentHealth = 100f;
+        }
+       
     }
 }

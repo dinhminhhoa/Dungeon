@@ -44,7 +44,7 @@ public class GameManager : BaseManager<GameManager>
         if (UIManager.HasInstance)
         {
             UIManager.Instance.ActiveMenuPanel(true);
-            UIManager.Instance.ActiveHealthBarPanel(false);
+            //UIManager.Instance.ActiveHealthBarPanel(false);
             UIManager.Instance.ActiveGamePanel(false);                          
             UIManager.Instance.ActiveVictoryPanel(false);
             UIManager.Instance.ActiveLosePanel(false);

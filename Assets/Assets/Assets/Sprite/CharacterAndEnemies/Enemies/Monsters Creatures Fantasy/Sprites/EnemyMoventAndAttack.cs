@@ -210,8 +210,10 @@ public class EnemyMoventAndAttack : MonoBehaviour
         foreach (Collider2D player in hitEnemies)
         {
             Debug.Log(" We hit " + player);
-
-            player.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
+            if (player != null)
+            {
+                player.GetComponent<PlayerHealth>().TakeDamage(attackDamage);
+            }
         }
     }
 
