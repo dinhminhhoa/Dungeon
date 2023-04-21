@@ -22,7 +22,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         currentHealth -= damage;
         // PLay hurt animation 

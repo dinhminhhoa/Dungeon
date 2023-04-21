@@ -30,7 +30,7 @@ public class SkeletonAttackAndMovement : MonoBehaviour
     public float attackRange = 1f;
     public LayerMask enemyLayers;
     public Transform attackPoint;
-    [SerializeField] public int attackDamage;
+    [SerializeField] public float attackDamage;
 
 
     private void Awake()
@@ -114,8 +114,9 @@ public class SkeletonAttackAndMovement : MonoBehaviour
         {
             Vector2 targetPosition = new Vector2(target.position.x, transform.position.y);
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+            Flip();
         }
-        Flip();
+        
     }
 
     private void Attack()

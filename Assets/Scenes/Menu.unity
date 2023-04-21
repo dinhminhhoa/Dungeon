@@ -3556,7 +3556,6 @@ MonoBehaviour:
   victoryPanel: {fileID: 1141128463}
   losePanel: {fileID: 386626693}
   loadingPanel: {fileID: 1867409527}
-  healthBarPanel: {fileID: 1570836020}
 --- !u!4 &1007095413
 Transform:
   m_ObjectHideFlags: 0
