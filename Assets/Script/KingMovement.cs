@@ -140,4 +140,12 @@ public class KingMovement : MonoBehaviour
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
+    // add audio walk
+    // private void SoundWalk()
+    //{
+    // if(AudioManager.Instance)
+    //{
+        // AudioManager.Instance.PlaySoundSE(SE_Walk);
+    //}
+    //}
 }
