@@ -141,11 +141,11 @@ public class KingMovement : MonoBehaviour
         canDash = true;
     }
     // add audio walk
-    // private void SoundWalk()
-    //{
-    // if(AudioManager.Instance)
-    //{
-        // AudioManager.Instance.PlaySoundSE(SE_Walk);
-    //}
-    //}
+    private void SoundWalk()
+    {
+        if (AudioManager.HasInstance)
+        {
+            AudioManager.Instance.PlaySE(AUDIO.SE_RUN);
+        }
+    }
 }

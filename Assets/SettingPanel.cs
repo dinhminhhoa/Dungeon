@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -47,7 +45,6 @@ public class SettingPanel : MonoBehaviour
 
     public void OnCancelButtonClick()
     {
-   
         if (UIManager.HasInstance)
         {
             UIManager.Instance.ActiveSettingPanel(false);
@@ -60,7 +57,6 @@ public class SettingPanel : MonoBehaviour
                 UIManager.Instance.ActivePausePanel(true);
             }
         }
-        
     }
 
     public void OnSubmitButtonClick()

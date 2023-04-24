@@ -9,10 +9,10 @@ using UnityEngine.UI;
 public class GamePanel : MonoBehaviour
 {
     [SerializeField]
-    private TextMeshProUGUI numberOfCherries;
+    private TextMeshProUGUI numberOfGold;
     [SerializeField]
     private TextMeshProUGUI timeText;
-    public TextMeshProUGUI NumberOfCherries => numberOfCherries;
+    public TextMeshProUGUI NumberOfGold => numberOfGold;
     private float timeRemaining;
     private bool timerIsRunning = false;
 
@@ -77,7 +77,7 @@ public class GamePanel : MonoBehaviour
 
     private void OnPlayerCollect(int value)
     {
-        numberOfCherries.SetText(value.ToString());
+        numberOfGold.SetText(value.ToString());
     }
 
     void DisplayTime(float timeToDisplay)

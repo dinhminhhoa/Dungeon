@@ -32,9 +32,6 @@ public class UIManager : BaseManager<UIManager>
     private LoadingPanel loadingPanel;
     public LoadingPanel LoadingPanel => loadingPanel;
 
-    //[SerializeField]
-    //private HealthBarPanel healthBarPanel;
-    //public HealthBarPanel HealthBarPanel => healthBarPanel;
     private void Start()
     {
         ActiveMenuPanel(true);
@@ -44,8 +41,6 @@ public class UIManager : BaseManager<UIManager>
         ActiveVictoryPanel(false);
         ActiveLosePanel(false);
         ActiveLoadingPanel(false);
-        //ActiveHealthBarPanel(false);
-
     }
 
     private void Update()
@@ -94,8 +89,5 @@ public class UIManager : BaseManager<UIManager>
     {
         loadingPanel.gameObject.SetActive(active);
     }
-    //public void ActiveHealthBarPanel(bool active)
-    //{
-    //    healthBarPanel.gameObject.SetActive(active);
-    //}
+
 }

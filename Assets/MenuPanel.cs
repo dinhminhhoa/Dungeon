@@ -44,4 +44,3 @@ public class MenuPanel : MonoBehaviour
         howToPlayBtn.SetActive(true);
     }
 }
-
