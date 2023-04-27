@@ -227,4 +227,27 @@ public class EnemyMoventAndAttack : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
 
     }
+
+    private void SoundAtackPLayer1()
+    {
+        if (AudioManager.HasInstance)
+        {
+            AudioManager.Instance.PlaySE(AUDIO.SE_ENEMY_ATTACK1);
+        }
+    }
+    private void SoundEnemyHurt()
+    {
+        if (AudioManager.HasInstance)
+        {
+            AudioManager.Instance.PlaySE(AUDIO.SE_ENEMY_HURT);
+        }
+    }
+    private void SoundEnemyDead()
+    {
+        if (AudioManager.HasInstance)
+        {
+            AudioManager.Instance.PlaySE(AUDIO.SE_ENEMY_DEATH1);
+        }
+    }
+
 }

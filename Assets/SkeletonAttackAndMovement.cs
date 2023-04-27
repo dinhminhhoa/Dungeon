@@ -223,4 +223,33 @@ public class SkeletonAttackAndMovement : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
 
     }
+    private void SoundEnemyDeath1()
+    {
+        if (AudioManager.HasInstance)
+        {
+            AudioManager.Instance.PlaySE(AUDIO.SE_ENEMY_DEATH1);
+        }
+    }
+    private void SoundAtackPLayer1()
+    {
+        if (AudioManager.HasInstance)
+        {
+            AudioManager.Instance.PlaySE(AUDIO.SE_ENEMY_ATTACK1);
+        }
+    }
+    private void SoundAtackPLayer2()
+    {
+        if (AudioManager.HasInstance)
+        {
+            AudioManager.Instance.PlaySE(AUDIO.SE_ENEMY_ATTACK2);
+        }
+    }
+
+    private void SoundEnemyHurtSkeleton()
+    {
+        if (AudioManager.HasInstance)
+        {
+            AudioManager.Instance.PlaySE(AUDIO.SE_ENEMY_HURT);
+        }
+    }
 }

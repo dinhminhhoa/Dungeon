@@ -20,10 +20,10 @@ public class ItemCollect : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Gold"))
         {
-            //if (AudioManager.HasInstance)
-            //{
-            //    AudioManager.Instance.PlaySE(AUDIO.SE_COLLECT);
-            //}
+            if (AudioManager.HasInstance)
+            {
+                AudioManager.Instance.PlaySE(AUDIO.SE_PLAYER_COLLECT_GOLD);
+            }
             Destroy(collision.gameObject);
             Gold++;
             GameManager.Instance.UpdateGold(Gold);

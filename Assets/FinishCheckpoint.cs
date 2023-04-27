@@ -11,10 +11,10 @@ public class FinishCheckpoint : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && !levelComplete)
         {
-            //if (AudioManager.HasInstance)
-            //{
-            //    AudioManager.Instance.PlaySE(AUDIO.SE_FINISH);
-            //}
+            if (AudioManager.HasInstance)
+            {
+                AudioManager.Instance.PlaySE(AUDIO.SE_PLAYER_FINISH);
+            }
             levelComplete = true;
             Invoke("CompleteLevel", 2f);// 2 giay sau chuyen scene
         }
@@ -31,11 +31,11 @@ public class FinishCheckpoint : MonoBehaviour
             }
         }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        //if (UIManager.HasInstance && AudioManager.HasInstance)
-        //{
-           
-        //    AudioManager.Instance.PlayBGM(AUDIO.BGM_BGM_04);
-        //}
+        if (UIManager.HasInstance && AudioManager.HasInstance)
+        {
+
+            AudioManager.Instance.PlayBGM(AUDIO.BGM_BGM_03);
+        }
         UIManager.Instance.GamePanel.SetTimeRemain(240);
 
     }

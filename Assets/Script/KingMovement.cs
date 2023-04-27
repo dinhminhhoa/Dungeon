@@ -145,7 +145,44 @@ public class KingMovement : MonoBehaviour
     {
         if (AudioManager.HasInstance)
         {
-            AudioManager.Instance.PlaySE(AUDIO.SE_RUN);
+            AudioManager.Instance.PlaySE(AUDIO.SE_PLAYER_RUN);
         }
     }
+    private void SoundHurt()
+    {
+        if (AudioManager.HasInstance)
+        {
+            AudioManager.Instance.PlaySE(AUDIO.SE_PLAYER_HURT);
+        }
+    }
+    private void SoundDeath()
+    {
+        if (AudioManager.HasInstance)
+        {
+            AudioManager.Instance.PlaySE(AUDIO.SE_PLAYER_DEATH);
+        }
+    }
+
+    private void SoundAttack1()
+    {
+        if (AudioManager.HasInstance)
+        {
+            AudioManager.Instance.PlaySE(AUDIO.SE_ENEMY_ATTACK1);
+        }
+    }
+    private void SoundAttack2()
+    {
+        if (AudioManager.HasInstance)
+        {
+            AudioManager.Instance.PlaySE(AUDIO.SE_PLAYER_ATTACK_2);
+        }
+    }
+    private void SoundAttack3()
+    {
+        if (AudioManager.HasInstance)
+        {
+            AudioManager.Instance.PlaySE(AUDIO.SE_PLAYER_ATTACK_3);
+        }
+    }
+
 }

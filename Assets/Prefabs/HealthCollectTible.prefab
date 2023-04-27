@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3489844275696244074}
   - component: {fileID: 3489844275696244073}
   - component: {fileID: 3489844275696244072}
+  - component: {fileID: 404809121240893397}
   m_Layer: 0
   m_Name: HealthCollectTible
   m_TagString: Untagged
@@ -123,3 +124,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBonus: 15
+--- !u!95 &404809121240893397
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3489844275696244071}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b2f8ea01ad7e70e4faae556849830b53, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
