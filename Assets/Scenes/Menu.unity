@@ -6792,7 +6792,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -373.45404, y: 226.49998}
+  m_AnchoredPosition: {x: -371.33902, y: 240.929}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1474616432
@@ -7544,7 +7544,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -327, y: 26}
+  m_AnchoredPosition: {x: -340.09, y: 43.2504}
   m_SizeDelta: {x: 292.9979, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1686761976
@@ -7569,7 +7569,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Jump : Press Space to Jump
 
-'
+    Press Shift Left to Dash'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -8441,7 +8441,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -298, y: 307}
+  m_AnchoredPosition: {x: -309.67334, y: 325.33374}
   m_SizeDelta: {x: 349.9081, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1939882234
@@ -8464,7 +8464,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Move \nPress A or press <- : move left \nPress D or press -> : move right\n\n"
+  m_text: "Move :\n- Press A or press <- : move left \n- Press D or press -> : move
+    right\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}

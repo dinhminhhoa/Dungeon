@@ -239,7 +239,7 @@ public class EnemyMoventAndAttack : MonoBehaviour
     {
         if (AudioManager.HasInstance)
         {
-            AudioManager.Instance.PlaySE(AUDIO.SE_ENEMY_HURT);
+            AudioManager.Instance.PlaySE(AUDIO.SE_ENEMY_DEATH1);
         }
     }
     private void SoundEnemyDead()
